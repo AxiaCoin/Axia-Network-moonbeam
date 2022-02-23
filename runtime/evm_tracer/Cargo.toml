@@ -1,0 +1,51 @@
+[package]
+name = "moonbeam-evm-tracer"
+authors = ["AxiaStake"]
+edition = "2018"
+homepage = "https://moonbeam.network"
+license = "GPL-3.0-only"
+repository = "https://github.com/AxiaStake/moonbeam/"
+version = "0.1.0"
+
+[dependencies]
+
+# Moonbeam
+evm-tracing-events = { path = "../../primitives/rpc/evm-tracing-events", default-features = false, features = [
+	"evm-tracing",
+] }
+moonbeam-primitives-ext = { path = "../../primitives/ext", default-features = false }
+
+# Axlib
+codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", package = "axia-scale-codec", version = "2.3.1", default-features = false }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+
+# Frontier
+ethereum-types = { git = "https://github.com/axia-tech/axia-common", branch = "master", version = "0.12.0", default-features = false }
+evm = { version = "0.30.1", default-features = false, features = [
+	"with-codec",
+] }
+evm-gasometer = { version = "0.30.0", default-features = false }
+evm-runtime = { version = "0.30.0", default-features = false }
+fp-evm = { git = "https://github.com/axia-tech/frontier", branch = "master", default-features = false }
+pallet-evm = { git = "https://github.com/axia-tech/frontier", branch = "master", default-features = false }
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"ethereum-types/std",
+	"evm-gasometer/std",
+	"evm-runtime/std",
+	"evm-tracing-events/std",
+	"evm/std",
+	"evm/with-serde",
+	"fp-evm/std",
+	"moonbeam-primitives-ext/std",
+	"pallet-evm/std",
+	"sp-core/std",
+	"sp-runtime/std",
+	"sp-std/std",
+]

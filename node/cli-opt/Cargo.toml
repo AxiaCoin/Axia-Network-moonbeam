@@ -1,0 +1,21 @@
+[package]
+name = "moonbeam-cli-opt"
+authors = ["AxiaStake"]
+edition = "2018"
+homepage = "https://moonbeam.network"
+license = "GPL-3.0-only"
+version = "0.15.1"
+
+[dependencies]
+libsecp256k1 = "0.6"
+primitive-types = { git = "https://github.com/axia-tech/axia-common", branch = "master", version = "0.10.0" }
+sha3 = "0.9"
+structopt = "0.3.8"
+tiny-bip39 = "0.8"
+tiny-hderive = "0.3.0"
+
+# Moonbeam
+account = { path = "../../primitives/account" }
+
+# Axlib
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "dev" }

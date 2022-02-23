@@ -1,0 +1,55 @@
+[package]
+name = "pallet-democracy-precompiles"
+authors = ["AxiaStake"]
+description = "A Precompile to make Axlib's pallet-democracy accessible to pallet-evm"
+edition = "2018"
+version = "0.2.0"
+
+[dependencies]
+log = "0.4"
+num_enum = { version = "0.5.3", default-features = false }
+
+# Moonbeam
+precompile-utils = { path = "../utils", default-features = false }
+
+# Axlib
+codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", package = "axia-scale-codec", version = "2.3.1", default-features = false }
+fp-evm = { git = "https://github.com/axia-tech/frontier", branch = "master", default-features = false }
+frame-support = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+frame-system = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+pallet-democracy = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+
+
+# Frontier
+pallet-evm = { git = "https://github.com/axia-tech/frontier", branch = "master", default-features = false }
+
+[dev-dependencies]
+derive_more = "0.99"
+serde = "1.0.100"
+
+# Axlib
+pallet-balances = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-scheduler = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-timestamp = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+scale-info = { git = "https://github.com/axia-tech/scale-info", branch = "v1.0.0", version = "1.0.0", default-features = false, features = [
+	"derive",
+] }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+[features]
+default = ["std"]
+std = [
+	"codec/std",
+	"fp-evm/std",
+	"frame-support/std",
+	"frame-system/std",
+	"pallet-democracy/std",
+	"pallet-evm/std",
+	"precompile-utils/std",
+	"sp-core/std",
+	"sp-io/std",
+	"sp-std/std",
+]

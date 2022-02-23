@@ -1,0 +1,21 @@
+[package]
+name = "moonbeam-rpc-core-txpool"
+authors = ["AxiaStake"]
+edition = "2018"
+homepage = "https://moonbeam.network"
+license = "GPL-3.0-only"
+repository = "https://github.com/AxiaStake/moonbeam/"
+version = "0.6.0"
+
+[dependencies]
+ethereum = { version = "0.9.0", default-features = false, features = [
+    "with-codec",
+] }
+ethereum-types = { git = "https://github.com/axia-tech/axia-common", branch = "master", version = "0.12.0" }
+jsonrpc-core = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0.0" }
+jsonrpc-core-client = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0.0" }
+jsonrpc-derive = { git = "https://github.com/axia-tech/jsonrpc", branch = "master", version = "18.0.0" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+fc-rpc-core = { git = "https://github.com/axia-tech/frontier", branch = "master" }

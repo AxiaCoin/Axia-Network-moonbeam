@@ -1,0 +1,58 @@
+[package]
+name = "xcm-transactor"
+authors = ["AxiaStake"]
+edition = "2018"
+version = "0.1.0"
+
+[dependencies]
+serde = { version = "1.0.124", optional = true }
+
+# Moonbeam
+xcm-primitives = { path = "../../primitives/xcm/", default-features = false }
+
+# Axlib
+frame-support = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+frame-system = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+axia-scale-codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", version = "2.0.0", default-features = false, features = [
+	"derive",
+] }
+scale-info = { git = "https://github.com/axia-tech/scale-info", branch = "v1.0.0", version = "1.0.0", default-features = false, features = [
+	"derive",
+] }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+
+# Cumulus
+cumulus-primitives-core = { git = "https://github.com/axia-tech/cumulus", branch = "master", default-features = false }
+
+# AXIA / XCM
+orml-traits = { git = "https://github.com/axia-tech/open-runtime-module-library", branch = "master", default-features = false }
+axia-runtime-common = { git = "https://github.com/axia-tech/axia", branch = "dev", default-features = false }
+xcm = { git = "https://github.com/axia-tech/axia", branch = "dev", default-features = false }
+xcm-builder = { git = "https://github.com/axia-tech/axia", branch = "dev", default-features = false }
+xcm-executor = { git = "https://github.com/axia-tech/axia", branch = "dev", default-features = false }
+
+[dev-dependencies]
+pallet-balances = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-timestamp = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+pallet-xcm = { git = "https://github.com/axia-tech/axia", branch = "dev" }
+axia-scale-codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", version = "2.3.1" }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+[features]
+default = ["std"]
+std = [
+	"cumulus-primitives-core/std",
+	"frame-support/std",
+	"frame-system/std",
+	"axia-scale-codec/std",
+	"axia-runtime-common/std",
+	"serde",
+	"sp-io/std",
+	"sp-runtime/std",
+	"sp-std/std",
+	"xcm-executor/std",
+	"xcm-primitives/std",
+	"xcm/std",
+]

@@ -1,0 +1,65 @@
+[package]
+name = "perf-test"
+authors = ["AxiaStake"]
+description = "Moonbeam Performance Tests"
+edition = "2018"
+version = "0.1.0"
+
+[dependencies]
+async-io = "1.3"
+cli-table = "0.4"
+futures = { version = "0.3.1", features = ["compat"] }
+hex = "0.4.3"
+libsecp256k1 = { version = "0.5" }
+log = "0.4.8"
+num_cpus = "1.13.0"
+psutil = "3.2.1"
+raw-cpuid = "10.2.0"
+rlp = { git = "https://github.com/axia-tech/axia-common", branch = "master", version = "0.5" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha3 = { version = "0.8" }
+structopt = "0.3.8"
+
+heim = { git = "https://github.com/heim-rs/heim", rev = "1fb090576629cd2788dff993cc6ef77547f3df18" }
+heim-common = { git = "https://github.com/heim-rs/heim", rev = "1fb090576629cd2788dff993cc6ef77547f3df18" }
+heim-cpu = { git = "https://github.com/heim-rs/heim", rev = "1fb090576629cd2788dff993cc6ef77547f3df18" }
+# TODO: heim-host generates a conflict for crate 'platforms'
+# heim-host = { git = "https://github.com/heim-rs/heim", rev = "1fb090576629cd2788dff993cc6ef77547f3df18" }
+heim-memory = { git = "https://github.com/heim-rs/heim", rev = "1fb090576629cd2788dff993cc6ef77547f3df18" }
+
+# Moonbeam
+
+cli-opt = { package = "moonbeam-cli-opt", path = "../cli-opt", default-features = false }
+# TODO: handle different runtime builds
+moonbase-runtime = { path = "../../runtime/moonbase" }
+service = { package = "moonbeam-service", path = "../service", default-features = false }
+
+# Axlib
+sc-basic-authorship = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-cli = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-client-api = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-client-db = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-consensus-manual-seal = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-executor = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-rpc = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-service = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sc-transaction-pool = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-api = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-externalities = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-keystore = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-state-machine = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-timestamp = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+# Frontier
+ethereum = { version = "0.9.0" }
+fc-consensus = { git = "https://github.com/axia-tech/frontier", branch = "master" }
+fp-evm = { git = "https://github.com/axia-tech/frontier", branch = "master" }
+fp-rpc = { git = "https://github.com/axia-tech/frontier", branch = "master" }
+pallet-ethereum = { git = "https://github.com/axia-tech/frontier", branch = "master" }
+
+# Cumulus / Nimbus
+cumulus-primitives-allychain-inherent = { git = "https://github.com/axia-tech/cumulus", branch = "master" }
+nimbus-primitives = { git = "https://github.com/axia-tech/nimbus", branch = "master" }

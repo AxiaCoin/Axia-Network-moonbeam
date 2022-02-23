@@ -1,0 +1,69 @@
+[package]
+name = "moonbeam"
+authors = ["AxiaStake"]
+description = "Moonbeam Collator"
+edition = "2018"
+homepage = "https://moonbeam.network"
+license = "GPL-3.0-only"
+version = "0.12.3"
+
+[[bin]]
+name = 'moonbeam'
+path = 'src/main.rs'
+
+[dependencies]
+futures = { version = "0.3.1", features = ["compat"] }
+
+moonbeam-cli = { path = "cli", default-features = false }
+moonbeam-service = { path = "service", default-features = false }
+
+[dev-dependencies]
+assert_cmd = "0.12"
+hex = "0.4.3"
+nix = "0.17"
+serde = { version = "1.0.101", features = ["derive"] }
+serde_json = "1.0"
+tempfile = "3.2.0"
+
+# Benchmarking
+pallet-xcm = { git = "https://github.com/axia-tech/axia", branch = "dev" }
+xcm-builder = { git = "https://github.com/axia-tech/axia", branch = "dev" }
+
+[features]
+default = ["moonbase-native", "moonbeam-native", "moonriver-native"]
+
+axiatest-native = ["moonbeam-service/axiatest-native"]
+betanet-native = ["moonbeam-service/betanet-native"]
+alphanet-native = [
+	"moonbeam-cli/alphanet-native",
+	"moonbeam-service/alphanet-native",
+]
+
+moonbase-native = [
+	"moonbeam-cli/moonbase-native",
+	"moonbeam-service/moonbase-native",
+]
+moonbeam-native = [
+	"moonbeam-cli/moonbeam-native",
+	"moonbeam-service/moonbeam-native",
+]
+moonriver-native = [
+	"moonbeam-cli/moonriver-native",
+	"moonbeam-service/moonriver-native",
+]
+
+moonbase-native-tracing = ["moonbeam-service/moonbase-native-tracing"]
+
+test-spec = []
+
+runtime-benchmarks = [
+	"moonbeam-cli/runtime-benchmarks",
+	"pallet-xcm/runtime-benchmarks",
+	"xcm-builder/runtime-benchmarks",
+]
+
+moonbase-runtime-benchmarks = [
+	"moonbeam-cli/moonbase-runtime-benchmarks",
+	"pallet-xcm/runtime-benchmarks",
+	"xcm-builder/runtime-benchmarks",
+]

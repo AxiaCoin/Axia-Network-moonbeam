@@ -1,0 +1,29 @@
+[package]
+name = "pallet-ethereum-chain-id"
+authors = ["AxiaStake"]
+edition = "2018"
+version = "1.0.0"
+
+[dependencies]
+serde = { version = "1.0.101", optional = true, features = ["derive"] }
+
+# Axlib
+frame-support = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+frame-system = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+axia-scale-codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", version = "2.3.1", default-features = false, features = [
+	"derive",
+] }
+scale-info = { git = "https://github.com/axia-tech/scale-info", branch = "v1.0.0", version = "1.0.0", default-features = false, features = [
+	"derive",
+] }
+
+[features]
+default = ["std"]
+std = [
+	"frame-support/std",
+	"frame-system/std",
+	"axia-scale-codec/std",
+	"scale-info/std",
+	"serde",
+]
+try-runtime = ["frame-support/try-runtime"]

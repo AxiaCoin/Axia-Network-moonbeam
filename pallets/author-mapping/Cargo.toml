@@ -1,0 +1,48 @@
+[package]
+name = "pallet-author-mapping"
+authors = ["AxiaStake"]
+description = "Maps AuthorIds to AccountIds Useful for associating consensus authors with in-runtime accounts"
+edition = "2018"
+version = "2.0.4"
+
+[dependencies]
+log = { version = "0.4", default-features = false }
+serde = { version = "1.0.101", optional = true }
+
+# Axlib
+frame-benchmarking = { git = "https://github.com/axia-tech/axlib", branch = "dev", optional = true, default-features = false }
+frame-support = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+frame-system = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+axia-scale-codec = { git = "https://github.com/axia-tech/axia-scale-codec", branch = "v2.3.1", version = "2.3.1", default-features = false, features = [
+	"derive",
+] }
+scale-info = { git = "https://github.com/axia-tech/scale-info", branch = "v1.0.0", version = "1.0.0", default-features = false, features = [
+	"derive",
+] }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "dev", default-features = false }
+
+# Nimbus
+nimbus-primitives = { git = "https://github.com/axia-tech/nimbus", branch = "master", default-features = false }
+
+[dev-dependencies]
+pallet-balances = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "dev" }
+
+[features]
+default = ["std"]
+std = [
+	"frame-benchmarking/std",
+	"frame-support/std",
+	"frame-system/std",
+	"log/std",
+	"nimbus-primitives/std",
+	"axia-scale-codec/std",
+	"scale-info/std",
+	"serde",
+	"sp-runtime/std",
+	"sp-std/std",
+]
+runtime-benchmarks = ["frame-benchmarking"]
+try-runtime = ["frame-support/try-runtime"]
